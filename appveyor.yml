@@ -4,7 +4,9 @@ install:
   - set PATH=%PATH%;%APPDATA%\Pub\Cache\bin
   - pub get
 
+  - choco install -y dartium
+
 build: off
 
 test_script:
-- pub run test
+- pub run test -p vm,dartium
