@@ -1,12 +1,15 @@
 install:
-  - choco install -y dart-sdk
+  - choco install -y dart-sdk 7zip.commandline
   - set PATH=%PATH%;C:\tools\dart-sdk\bin
   - set PATH=%PATH%;%APPDATA%\Pub\Cache\bin
   - pub get
 
-  - choco install -y dartium
+  - ps: (New-Object System.Net.WebClient).DownloadFile("https://storage.googleapis.com/dart-archive/channels/stable/release/latest/dartium/content_shell-linux-x64-release.zip", "content_shell.zip")
+  - 7z e content_shell.zip
+  - move drt-win-full-stable-* content_shell
+  - set PATH=%PATH%;%CD%\content_shell
 
 build: off
 
 test_script:
-- pub run test -p vm,dartium
+- pub run test -p vm,content_shell
