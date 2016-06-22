@@ -14,4 +14,4 @@ install:
 build: off
 
 test_script:
-- pub run test -p vm,content_shell
+- pub run test -p vm,content-shell
