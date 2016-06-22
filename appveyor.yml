@@ -4,8 +4,9 @@ install:
   - set PATH=%PATH%;%APPDATA%\Pub\Cache\bin
   - pub get
 
-  - ps: (New-Object System.Net.WebClient).DownloadFile("https://storage.googleapis.com/dart-archive/channels/stable/release/latest/dartium/content_shell-linux-x64-release.zip", "content_shell.zip")
-  - 7z e content_shell.zip
+  - appveyor DownloadFile "https://storage.googleapis.com/dart-archive/channels/stable/release/latest/dartium/content_shell-linux-x64-release.zip"
+  - 7z e content_shell-linux-x64-release.zip
+  - rm content_shell-linux-x64-release.zip
   - move drt-win-full-stable-* content_shell
   - set PATH=%PATH%;%CD%\content_shell
 
