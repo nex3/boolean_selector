@@ -11,6 +11,8 @@ install:
   - ps: Rename-Item (Get-ChildItem drt-win-full-stable-*) content_shell
   - set PATH=%PATH%;%CD%\content_shell
 
+  - content_shell.exe
+
 build: off
 
 test_script:
